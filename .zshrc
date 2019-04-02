@@ -96,7 +96,7 @@ export EDITOR=vim
   # alias zshconfig="mate ~/.zshrc"
   # alias ohmyzsh="mate ~/.oh-my-zsh"
   alias dep=./vendor/bin/dep
-  alias vim=/usr/bin/nvim
+  alias vim='nvim'
   alias mux=tmuxinator
 
 # pyenv
