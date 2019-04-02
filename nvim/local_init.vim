@@ -1,5 +1,8 @@
 let g:seiya_auto_enable=1
 
+" インサートモードから抜ける
+inoremap <silent> jj <ESC>
+
 " Neovim/Vim8で快適Vue.js開発(Vue Language Server)
 " https://muunyblue.github.io/520bae6649b42ff5a3c8c58b7fcfc5a9.html
 " for deoplete.nvim
