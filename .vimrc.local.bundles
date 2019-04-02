@@ -1,0 +1,16 @@
+Plug 'posva/vim-vue'
+
+" neosnippet.vim
+if has('nvim')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+
+" vue.jsの設定？
+" https://muunyblue.github.io/520bae6649b42ff5a3c8c58b7fcfc5a9.html
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
