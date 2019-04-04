@@ -67,7 +67,9 @@ let g:ale_fixers = {
       \    'trim_whitespace',
       \  ],
       \  'ruby': [
-      \    'rubocop'
+      \    'rubocop',
+      \    'remove_trailing_lines',
+      \    'trim_whitespace',
       \  ],
       \}
 
@@ -76,7 +78,7 @@ let g:ale_linters = {
       \    'html': [],
       \    'css': ['stylelint'],
       \    'javascript': ['prettier', 'eslint'],
-      \    'vue': ['prettier', 'eslint']
+      \    'vue': ['prettier', 'eslint'],
       \ }
 
 " ===========================================================================
