@@ -33,6 +33,50 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " NERDTreeのツリー部分の横幅を設定
 let NERDTreeWinSize=31
+
+" ===========================================================================
+
+
+" ALE設定 ===================================================================
+" cf. https://github.com/w0rp/ale#usage-linting
+
+" ALEをvim-airlineで表示
+let g:airline#extensions#ale#enabled = 1
+
+let g:ale_lint_on_text_changed = 1
+let g:ale_fix_on_save = 1
+" 
+" ローカルの設定ファイルを考慮する
+let g:ale_javascript_prettier_use_local_config = 1
+
+" Enable completion where available.
+" This setting must be set before ALE is loaded.
+let g:ale_completion_enabled = 1
+
+let g:ale_fixers = {
+      \ 'javascript': [
+      \ 'eslint',
+      \ 'prettier',
+      \ 'remove_trailing_lines',
+      \ 'trim_whitespace',
+      \ ],
+      \ 'vue': [
+      \ 'eslint',
+      \ 'prettier',
+      \ 'remove_trailing_lines',
+      \ 'trim_whitespace',
+      \ ],
+      \ 'ruby': ['rubocop'],
+      \}
+
+let g:ale_linters = {
+      \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+      \ 'html': [],
+      \ 'css': ['stylelint'],
+      \ 'javascript': ['prettier', 'eslint'],
+      \ 'vue': ['prettier', 'eslint']
+      \ }
+
 " ===========================================================================
 
 
@@ -93,47 +137,5 @@ let g:LanguageClient_serverCommands = {
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
-
-" ここまでNeovim/Vim8で快適Vue.js開発(Vue Language Server)
-" ===========================================================================
-
-" ALE設定 ===================================================================
-" cf. https://github.com/w0rp/ale#usage-linting
-
-" ALEをvim-airlineで表示
-let g:airline#extensions#ale#enabled = 1
-
-let g:ale_lint_on_text_changed = 1
-let g:ale_fix_on_save = 1
-" 
-" ローカルの設定ファイルを考慮する
-let g:ale_javascript_prettier_use_local_config = 1
-
-" Enable completion where available.
-" This setting must be set before ALE is loaded.
-let g:ale_completion_enabled = 1
-
-let g:ale_fixers = {
-      \ 'javascript': [
-      \ 'eslint',
-      \ 'prettier',
-      \ 'remove_trailing_lines',
-      \ 'trim_whitespace',
-      \ ],
-      \ 'vue': [
-      \ 'eslint',
-      \ 'prettier',
-      \ 'remove_trailing_lines',
-      \ 'trim_whitespace',
-      \ ],
-      \}
-
-let g:ale_linters = {
-      \ '*': ['remove_trailing_lines', 'trim_whitespace'],
-      \ 'html': [],
-      \ 'css': ['stylelint'],
-      \ 'javascript': ['prettier', 'eslint'],
-      \ 'vue': ['prettier', 'eslint']
-      \ }
 
 " ===========================================================================
