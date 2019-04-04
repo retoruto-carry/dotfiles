@@ -1,9 +1,43 @@
-let g:seiya_auto_enable=1
-
 " インサートモードから抜ける
 inoremap <silent> jj <ESC>
 
+" 検索ハイライトをescキーを押したら消えるようにする
+nnoremap <ESC><ESC> :nohl<CR>
+
+" molokai の見にくさを改善する
+hi Comment ctermfg=102
+hi Visual  ctermbg=239
+
+" 背景を端末の背景と同じ色・透明度にする
+" cf. http://h-miyako.hatenablog.com/entry/2014/12/25/004638
+let g:seiya_auto_enable=1
+
+" 途中からハイライトされなくなる現象を解決
+" cf. https://qiita.com/kaede_sato/items/604713a3e6b4cf4be8a5
+" 懸念点: <style>の中でハイライトが聞かなくなったファイルがある
+autocmd FileType vue syntax sync fromstart
+
+
+" NERDTree設定 ===============================================================
+
+" open a NERDTree automatically when vim starts up if no files were specified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" open NERDTree automatically when vim starts up on opening a directory
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+
+" close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" NERDTreeのツリー部分の横幅を設定
+let NERDTreeWinSize=31
+" ===========================================================================
+
+
 " Neovim/Vim8で快適Vue.js開発(Vue Language Server)
+" ===========================================================================
 " https://muunyblue.github.io/520bae6649b42ff5a3c8c58b7fcfc5a9.html
 " for deoplete.nvim
 let g:deoplete#enable_at_startup = 1
@@ -59,40 +93,12 @@ let g:LanguageClient_serverCommands = {
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+
 " ここまでNeovim/Vim8で快適Vue.js開発(Vue Language Server)
+" ===========================================================================
 
-" 検索ハイライトをescキーを押したら消えるようにする
-nnoremap <ESC><ESC> :nohl<CR>
-
-" molokai の見にくさを改善する
-hi Comment ctermfg=102
-hi Visual  ctermbg=239
-
-
-" 途中からハイライトされなくなる現象を解決
-" https://qiita.com/kaede_sato/items/604713a3e6b4cf4be8a5
-" 懸念点: <style>の中でハイライトが聞かなくなったファイルがある
-autocmd FileType vue syntax sync fromstart
-
-" NERDTree設定
-
-" open a NERDTree automatically when vim starts up if no files were specified
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
-" open NERDTree automatically when vim starts up on opening a directory
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-
-" close vim if the only window left open is a NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" NERDTreeのツリー部分の横幅を設定
-let NERDTreeWinSize=31
-
-
-" ALE設定
-" https://github.com/w0rp/ale#usage-linting
+" ALE設定 ===================================================================
+" cf. https://github.com/w0rp/ale#usage-linting
 
 " ALEをvim-airlineで表示
 let g:airline#extensions#ale#enabled = 1
@@ -129,3 +135,5 @@ let g:ale_linters = {
       \ 'javascript': ['prettier', 'eslint'],
       \ 'vue': ['prettier', 'eslint']
       \ }
+
+" ===========================================================================
