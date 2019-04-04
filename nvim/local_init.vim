@@ -54,27 +54,29 @@ let g:ale_javascript_prettier_use_local_config = 1
 let g:ale_completion_enabled = 1
 
 let g:ale_fixers = {
-      \ 'javascript': [
-      \ 'eslint',
-      \ 'prettier',
-      \ 'remove_trailing_lines',
-      \ 'trim_whitespace',
-      \ ],
-      \ 'vue': [
-      \ 'eslint',
-      \ 'prettier',
-      \ 'remove_trailing_lines',
-      \ 'trim_whitespace',
-      \ ],
-      \ 'ruby': ['rubocop'],
+      \  'javascript': [
+      \    'eslint',
+      \    'prettier',
+      \    'remove_trailing_lines',
+      \    'trim_whitespace',
+      \  ],
+      \  'vue': [
+      \    'eslint',
+      \    'prettier',
+      \    'remove_trailing_lines',
+      \    'trim_whitespace',
+      \  ],
+      \  'ruby': [
+      \    'rubocop'
+      \  ],
       \}
 
 let g:ale_linters = {
-      \ '*': ['remove_trailing_lines', 'trim_whitespace'],
-      \ 'html': [],
-      \ 'css': ['stylelint'],
-      \ 'javascript': ['prettier', 'eslint'],
-      \ 'vue': ['prettier', 'eslint']
+      \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+      \    'html': [],
+      \    'css': ['stylelint'],
+      \    'javascript': ['prettier', 'eslint'],
+      \    'vue': ['prettier', 'eslint']
       \ }
 
 " ===========================================================================
