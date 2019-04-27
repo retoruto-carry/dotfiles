@@ -34,6 +34,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " NERDTreeのツリー部分の横幅を設定
 let NERDTreeWinSize=31
 
+" NERDTreeを表示するコマンドを設定
+map <C-y> :NERDTreeToggle<CR>
+
 " ===========================================================================
 
 
