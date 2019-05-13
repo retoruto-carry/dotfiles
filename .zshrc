@@ -107,3 +107,6 @@ eval "$(pyenv init -)"
 # For rbenv"
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(~/.rbenv/bin/rbenv init -)"
+
+# for nodebrew
+export PATH=$HOME/.nodebrew/current/bin:$PATH
